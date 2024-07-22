@@ -21,11 +21,13 @@ const MultiTypeForm: React.FC = () => {
   });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type, checked } = event.target as HTMLInputElement | HTMLSelectElement;
+    const { name, value, type } = event.target;
     if (type === 'checkbox') {
+      const isChecked = (event.target as HTMLInputElement).checked;
+
       setFormData(prevData => ({
         ...prevData,
-        [name]: checked
+        [name]:isChecked,
       }));
     } else {
       setFormData(prevData => ({
